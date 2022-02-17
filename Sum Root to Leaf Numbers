@@ -1,0 +1,20 @@
+//
+public int sumNumbers(TreeNode root) {
+         return fun(root,0);
+     }
+public int fun(TreeNode root, int sum) {
+         if(root==null) return 0;
+         if(root.left==null && root.right==null) return sum+ root.val;
+         return fun(root.left,(sum+ root.val)*10)+fun(root.right,(sum+ root.val)*10);
+    }
+
+// sol 2
+public int sumNumbers(TreeNode root) {
+        return fun(0, root);
+    }
+    int fun(int curr, TreeNode root){
+        if(root == null) return 0;
+        curr = (10*curr) + root.val;
+        if(root.left == null && root.right == null)  return curr;
+        return fun(curr, root.left) + fun(curr, root.right);        
+    }
